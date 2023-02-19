@@ -1,10 +1,11 @@
 import numpy as np
 
-import tqdm as tqdm
-import torch.utils.data import DataLoader
+from tqdm import tqdm
+
+from torch.utils.data import DataLoader
 
 from torchvision.transforms import ToTensor
-from torchvision.dataset.mnist import MNIST
+from torchvision.datasets.mnist import MNIST
 
 
 

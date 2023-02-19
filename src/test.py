@@ -4,7 +4,10 @@ import torch
 
 from dataloder import Dataloader
 from utils import to_device
-def test():
+
+from torch.nn import CrossEntropyLoss
+
+def test(model):
     device = to_device()
 
     test_loader = Dataloader.get_test_loader()
@@ -18,7 +21,7 @@ def test():
             x,y = batch
             x,y = x.to(device), y.to(device)
             y_pred = model(x)
-            loss = criterion(y_pred,y)
+            loss = loss_metric(y_pred,y)
             test_loss += loss.detach().cpu().item() / len(test_loader)
 
             correct += torch.sum(torch.argmax(y_pred, dim=1)==y).detach().cpu().item()
